@@ -6,9 +6,19 @@ defmodule Proj1 do
   use Task
 
   def start_task(n, k) do
-    # Number of chunks given to each Task
-    num_of_divisions = 3
+    
+    possible_number_of_tasks =
+      1..n
+        |> Enum.to_list()
+        |> Enum.filter(fn x -> rem(n, x) == 0 end)
+        |> IO.inspect
 
+    # Number of chunks given to each Task
+    num_of_divisions = possible_number_of_tasks
+                        |> Enum.at(div(length(possible_number_of_tasks), 2)) 
+
+    IO.inspect possible_number_of_tasks, label: "The possible number of tasks are"
+   
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
@@ -16,7 +26,7 @@ defmodule Proj1 do
       |> Enum.to_list()
       |> Enum.chunk_every(div(n, num_of_divisions))
 
-    # Start a new Task for each range
+      # Start a new Task for each range
     tasks = 
       for x <- list_of_ranges do
         # NOTE: start_link has been used instead of async as we are not using the return value 
