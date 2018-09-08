@@ -32,10 +32,9 @@ defmodule Proj1 do
   end
 
   def start_task(workload_list, k) do
-   
     ## Number of chunks given to each Task
     num_of_divisions = 4
- 
+
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
@@ -48,7 +47,7 @@ defmodule Proj1 do
         # NOTE: start_link has been used instead of async as we are not using the return value 
         # The arg to start_link has to be the anonymous function not start_link(process_range(x))
         Task.start_link(fn -> process_range(x, k) end)
-    end
+      end
   end
 
   # Function to do all the calculations and print the output
@@ -73,17 +72,15 @@ defmodule Proj1 do
   end
 
   def find_best_task_division(n) do
-    
     # Make a list of the possible number of tasks
     possible_number_of_tasks =
       1..n
-        |> Enum.to_list()
-        |> Enum.filter(fn x -> rem(n, x) == 0 end)
-      
+      |> Enum.to_list()
+      |> Enum.filter(fn x -> rem(n, x) == 0 end)
+
     # Print the best task division (This should be assigned to num_of_divisions in start_task )
     possible_number_of_tasks
     |> Enum.at(div(length(possible_number_of_tasks), 4) * 3)
-    |> IO.inspect
-
-  end 
+    |> IO.inspect()
+  end
 end
