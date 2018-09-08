@@ -35,9 +35,7 @@ defmodule Proj1 do
    
     ## Number of chunks given to each Task
     num_of_divisions = 4
-    # possible_number_of_tasks
-    # |> Enum.at(div(length(possible_number_of_tasks), 2)) 
-
+ 
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
@@ -67,7 +65,8 @@ defmodule Proj1 do
 
       # Check if perfect square
       if sq_rt - trunc(sq_rt) == 0 do
-        IO.puts("#{ele}, #{sq_rt}, #{Node.self()}")
+        # IO.puts("#{ele}, #{sq_rt}, #{Node.self()}")
+        IO.puts("#{ele}")
       end
     end
   end
@@ -83,7 +82,7 @@ defmodule Proj1 do
       
     # Print the best task division (This should be assigned to num_of_divisions in start_task )
     possible_number_of_tasks
-    |> Enum.at(div(length(possible_number_of_tasks), 2))
+    |> Enum.at(div(length(possible_number_of_tasks), 4) * 3)
     |> IO.inspect
 
   end 
