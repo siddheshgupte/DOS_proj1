@@ -66,7 +66,8 @@ defmodule Proj1 do
       # Check if perfect square
       if sq_rt - trunc(sq_rt) == 0 do
         # IO.puts("#{ele}, #{sq_rt}, #{Node.self()}")
-        IO.puts("#{ele}")
+        # IO.puts("#{ele}")
+        IO.puts("#{ele}, #{Node.self()}")
       end
     end
   end
@@ -78,7 +79,6 @@ defmodule Proj1 do
       1..n
         |> Enum.to_list()
         |> Enum.filter(fn x -> rem(n, x) == 0 end)
-        |> IO.inspect
       
     # Print the best task division (This should be assigned to num_of_divisions in start_task )
     possible_number_of_tasks
