@@ -16,8 +16,10 @@
     * Finally to run the program in an iex session use: *Proj1.driver(n,k)*
 
 ### No. of machines
-  The program has been tested on 3 machines. 
-  iex(machine1@192.168.0.5)7> Proj1.driver(10000000, 50)
+  The program has been tested on **3 machines**. 
+
+
+iex(machine1@192.168.0.5)7> Proj1.driver(10000000, 50)
 7, 245.0, machine3@192.168.0.6
 28, 385.0, machine3@192.168.0.6
 44, 495.0, machine3@192.168.0.6
@@ -62,7 +64,7 @@ iex(machine1@192.168.0.5)8> 7556948, 53435865.0, machine1@192.168.0.5
 iex(machine1@192.168.0.5)8> 619208, 4378635.0, machine3@192.168.0.6
 iex(machine1@192.168.0.5)8> 753052, 5325055.0, machine3@192.168.0.6
 
-where the output is in the format start_number, square_number, Node.self
+where the output is in the format *start_number, square_number, Node.self*
 ### Performance
   * To determine the size of the work unit, we first computed a list of integers which perfectly divides the input n. Then we checked the ratio-CPU time/Real time at various indices of the list, and for different inputs. We found that the ratio is highest at 3/4th position in the list. For n= 1000000, the 3/4th position in the list and hence the size of work unit is 15625. 
 

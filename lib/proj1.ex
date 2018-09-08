@@ -65,7 +65,8 @@ defmodule Proj1 do
 
       # Check if perfect square
       if sq_rt - trunc(sq_rt) == 0 do
-        IO.puts("#{ele}, #{sq_rt}, #{Node.self()}")
+        # IO.puts("#{ele}, #{sq_rt}, #{Node.self()}")
+        IO.puts("#{ele}")
       end
     end
   end
