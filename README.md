@@ -1,7 +1,7 @@
 ## DOS Project 1 - Finding perfect squares that are sums of consecutive squares on distributed Elixir nodes
 
 ### Group info
-  Siddesh Gupte(UFID 2975-1118)
+  Siddhesh Gupte(UFID 2975-1118)
   Sagar Prabhu(UFID 8915-4951)
 
 ### Instructions
@@ -20,6 +20,50 @@
 
 ### No. of machines
   The program has been tested on 3 machines. 
+  iex(machine1@192.168.0.5)7> Proj1.driver(10000000, 50)
+7, 245.0, machine3@192.168.0.6
+28, 385.0, machine3@192.168.0.6
+44, 495.0, machine3@192.168.0.6
+67, 655.0, machine3@192.168.0.6
+87, 795.0, machine3@192.168.0.6
+124, 1055.0, machine3@192.168.0.6
+168, 1365.0, machine3@192.168.0.6
+287, 2205.0, machine3@192.168.0.6
+379, 2855.0, machine3@192.168.0.6
+1001139, 7079295.0, machine3@192.168.0.6
+512, 3795.0, machine3@192.168.0.6
+628, 4615.0, machine3@192.168.0.6
+2714784, 19196595.0, machine3@192.168.0.6
+843, 6135.0, machine3@192.168.0.6
+1099, 7945.0, machine3@192.168.0.6
+1792, 12845.0, machine3@192.168.0.6
+2328, 16635.0, machine3@192.168.0.6
+3103, 22115.0, machine3@192.168.0.6
+3779, 26895.0, machine3@192.168.0.6
+5032, 35755.0, machine3@192.168.0.6
+6524, 46305.0, machine3@192.168.0.6
+10563, 74865.0, machine3@192.168.0.6
+13687, 96955.0, machine3@192.168.0.6
+2096248, 14822885.0, machine3@192.168.0.6
+18204, 128895.0, machine3@192.168.0.6
+5835184, 41261155.0, machine2@192.168.0.7
+22144, 156755.0, machine3@192.168.0.6
+29447, 208395.0, machine3@192.168.0.6
+38143, 269885.0, machine3@192.168.0.6
+61684, 436345.0, machine3@192.168.0.6
+1296547, 9168145.0, machine3@192.168.0.6
+79892, 565095.0, machine3@192.168.0.6
+106219, 751255.0, machine3@192.168.0.6
+129183, 913635.0, machine3@192.168.0.6
+4389227, 31036695.0, machine2@192.168.0.7
+iex(machine1@192.168.0.5)8> 3609127, 25520555.0, machine2@192.168.0.7
+iex(machine1@192.168.0.5)8> 171748, 1214615.0, machine3@192.168.0.6
+iex(machine1@192.168.0.5)8> 222432, 1573005.0, machine3@192.168.0.6
+iex(machine1@192.168.0.5)8> 359639, 2543205.0, machine3@192.168.0.6
+iex(machine1@192.168.0.5)8> 465763, 3293615.0, machine3@192.168.0.6
+iex(machine1@192.168.0.5)8> 7556948, 53435865.0, machine1@192.168.0.5
+iex(machine1@192.168.0.5)8> 619208, 4378635.0, machine3@192.168.0.6
+iex(machine1@192.168.0.5)8> 753052, 5325055.0, machine3@192.168.0.6
 
 ### Performance
   * To determine the size of the work unit, we first computed a list of integers which perfectly divides the input n. Then we checked the ratio-CPU time/Real time at various indices of the list, and for differnt inputs. We found that the ratio is highest at 3/4th position in the list. For n= 1000000, the 3/4th position in the list and hence the size of work unit is 15625. 
@@ -50,4 +94,4 @@
                  = 2.527s/1.067s
                  = 2.368
 
-  * The larget problem we managed to solve is for n= and k= .  
+  * The largest problem we managed to solve is for n=10000000 and k=50 .  

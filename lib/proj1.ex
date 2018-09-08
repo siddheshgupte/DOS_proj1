@@ -34,15 +34,8 @@ defmodule Proj1 do
   def start_task(workload_list, k) do
    
     ## Number of chunks given to each Task
-<<<<<<< HEAD
     num_of_divisions = 4
  
-=======
-    num_of_divisions = 15625
-    # possible_number_of_tasks
-    # |> Enum.at(div(length(possible_number_of_tasks), 2)) 
-
->>>>>>> feba227c193c945d76ca5db7cc39f36a773d237a
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
@@ -88,7 +81,7 @@ defmodule Proj1 do
       
     # Print the best task division (This should be assigned to num_of_divisions in start_task )
     possible_number_of_tasks
-    |> Enum.at(div(length(possible_number_of_tasks), 2))
+    |> Enum.at(div(length(possible_number_of_tasks), 4) * 3)
     |> IO.inspect
 
   end 
