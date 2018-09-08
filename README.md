@@ -1,12 +1,7 @@
 ## DOS Project 1 - Finding perfect squares that are sums of consecutive squares on distributed Elixir nodes
 
 ### Group info
-<<<<<<< HEAD
-  Siddhesh Gupte(UFID 2975-1118)
-  Sagar Prabhu(UFID 8915-4951)
-=======
   Siddhesh Gupte(UFID 2975-1118) and Sagar Prabhu(UFID 8915-4951)
->>>>>>> 5bb50bd3cbfe173e2bfa8c4bef707e2896011095
 
 ### Instructions
 
@@ -67,6 +62,7 @@ iex(machine1@192.168.0.5)8> 7556948, 53435865.0, machine1@192.168.0.5
 iex(machine1@192.168.0.5)8> 619208, 4378635.0, machine3@192.168.0.6
 iex(machine1@192.168.0.5)8> 753052, 5325055.0, machine3@192.168.0.6
 
+where the output is in the format start_number, square_number, Node.self
 ### Performance
   * To determine the size of the work unit, we first computed a list of integers which perfectly divides the input n. Then we checked the ratio-CPU time/Real time at various indices of the list, and for different inputs. We found that the ratio is highest at 3/4th position in the list. For n= 1000000, the 3/4th position in the list and hence the size of work unit is 15625. 
 
@@ -93,8 +89,4 @@ iex(machine1@192.168.0.5)8> 753052, 5325055.0, machine3@192.168.0.6
 
     Total CPU time / Real time = 2.527s/1.067s = 2.368
 
-<<<<<<< HEAD
   * The largest problem we managed to solve is for n=10000000 and k=50 .  
-=======
-  * The largest problem we managed to solve is for n= and k= .  
->>>>>>> 5bb50bd3cbfe173e2bfa8c4bef707e2896011095
