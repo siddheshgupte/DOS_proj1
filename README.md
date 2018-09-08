@@ -66,7 +66,7 @@ iex(machine1@192.168.0.5)8> 753052, 5325055.0, machine3@192.168.0.6
 
 where the output is in the format *start_number, square_number, Node.self*
 ### Performance
-  * To determine the size of the work unit, we first computed a list of integers which perfectly divides the input n. Then we checked the ratio-CPU time/Real time at various indices of the list, and for different inputs. We found that the ratio is highest at 3/4th position in the list. For n= 1000000, the 3/4th position in the list and hence the size of work unit is 15625. 
+  * To determine the size of the work unit, we first computed a list of integers which perfectly divides the input n. Then we checked the ratio-CPU time/Real time at various indices of the list, and for different inputs. We found that the ratio is generally highest at 3/4th position in the list. For n= 1000000, the 3/4th position in the list and hence the size of work unit is 15625. 
 
   * There are no sequence of numbers for input n=1000000 and k=4 which satisfies the requirement. Hence on running the command *mix run proj1.exs 1000000 4*, there is no output.
 
@@ -94,4 +94,3 @@ where the output is in the format *start_number, square_number, Node.self*
   * The largest problem we managed to solve is for n=10000000 and k=50 . 
 
 ### Specific requirements 
-  The program makes use of the function *find_best_task_division(n)* inorder to find the optimal no. of divisions of n. The function computes a list and return the value at 3/4th postion as mentioned in the performance section above. The default no. of divisions in proj1.exs is 4. Hence inorder to run smaller inputs like n=3 k=2 , first run *Proj1.find_best_task_division(n)*. Enter the output at line 37 of proj1.ex and then run the program.
