@@ -8,18 +8,30 @@ defmodule Proj1 do
   # Function takes n and k and divides the input amongst machines
   def driver(n, k) do
     # Divide n according to the number of machines
-    start_index_1 = 1
-    end_index_1 = Kernel.trunc(n / 2)
-    start_index_2 = end_index_1 + 1
-    end_index_2 = n
-    # IO.inspect("#{start_index_1},#{end_index_1},#{start_index_2},#{end_index_2}")
+  if length(Node.list()) > 0 do
+  
+      # start_task(Enum.to_list(1..Kernel.trunc(n/length(Node.list)+1)), k)
+      
+      chunks_of_workloads =
+        1..n 
+        |> Enum.to_list
+        |> Enum.chunk_every(div(n,length(Node.list)+1) )
 
-    Node.spawn_link(:"machine2@192.168.0.7", Proj1, :start_task, [start_index_1, end_index_1, k])
+      for x <- Enum.to_list(0..length(Node.list)-1) do
+        Node.spawn_link(Enum.at(Node.list, x), Proj1, :start_task, [Enum.at(chunks_of_workloads, x), k])
+      end
+      
+      start_task(Enum.at(chunks_of_workloads,length(Node.list)), k)
 
-    start_task(start_index_2, end_index_2, k)
+
+  else  
+    start_task(Enum.to_list(1..n), k)
+
   end
 
-  def start_task(start_index, n, k) do
+  end
+
+  def start_task(workload_list, k) do
     # possible_number_of_tasks =
     #   1..n
     #     |> Enum.to_list()
@@ -34,11 +46,10 @@ defmodule Proj1 do
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
-      Range.new(start_index, n)
-      |> Enum.to_list()
-      |> Enum.chunk_every(div(n, num_of_divisions))
+      workload_list
+      |> Enum.chunk_every(div(length(workload_list), num_of_divisions))
 
-    # Start a new Task for each range
+      # Start a new Task for each range
     tasks =
       for x <- list_of_ranges do
         # NOTE: start_link has been used instead of async as we are not using the return value 
