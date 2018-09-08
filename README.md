@@ -91,4 +91,7 @@ where the output is in the format *start_number, square_number, Node.self*
 
     Total CPU time / Real time = 2.527s/1.067s = 2.368
 
-  * The largest problem we managed to solve is for n=10000000 and k=50 .  
+  * The largest problem we managed to solve is for n=10000000 and k=50 . 
+
+### Specific requirements 
+  The program makes use of the function *find_best_task_division(n)* inorder to find the optimal no. of divisions of n. The function computes a list and return the value at 3/4th postion as mentioned in the performance section above. The default no. of divisions in proj1.exs is 4. Hence inorder to run smaller inputs like n=3 k=2 , first run *Proj1.find_best_task_division(n)*. Enter the output at line 37 of proj1.ex and then run the program.
