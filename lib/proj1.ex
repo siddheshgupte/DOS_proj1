@@ -42,12 +42,11 @@ defmodule Proj1 do
       |> Enum.chunk_every(div(length(workload_list), num_of_divisions))
 
     # Start a new Task for each range
-    tasks =
-      for x <- list_of_ranges do
-        # NOTE: start_link has been used instead of async as we are not using the return value 
-        # The arg to start_link has to be the anonymous function not start_link(process_range(x))
-        Task.start_link(fn -> process_range(x, k) end)
-      end
+    for x <- list_of_ranges do
+      # NOTE: start_link has been used instead of async as we are not using the return value 
+      # The arg to start_link has to be the anonymous function not start_link(process_range(x))
+      Task.start_link(fn -> process_range(x, k) end)
+    end
   end
 
   # Function to do all the calculations and print the output
