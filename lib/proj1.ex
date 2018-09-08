@@ -34,8 +34,15 @@ defmodule Proj1 do
   def start_task(workload_list, k) do
    
     ## Number of chunks given to each Task
+<<<<<<< HEAD
     num_of_divisions = 4
  
+=======
+    num_of_divisions = 15625
+    # possible_number_of_tasks
+    # |> Enum.at(div(length(possible_number_of_tasks), 2)) 
+
+>>>>>>> feba227c193c945d76ca5db7cc39f36a773d237a
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
@@ -48,7 +55,7 @@ defmodule Proj1 do
         # NOTE: start_link has been used instead of async as we are not using the return value 
         # The arg to start_link has to be the anonymous function not start_link(process_range(x))
         Task.start_link(fn -> process_range(x, k) end)
-      end
+    end
   end
 
   # Function to do all the calculations and print the output
