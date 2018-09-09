@@ -21,7 +21,7 @@ defmodule Proj1 do
       # Assign all workloads except the last one to connected nodes (from 0 to len(Node.list)-1)
       for x <- Enum.to_list(0..(length(Node.list()) - 1)) do
         Node.spawn_link(Enum.at(Node.list(), x), Proj1, :start_task, [
-          Enum.at(chunks_of_workloads, x),
+          number_of_divisions, Enum.at(chunks_of_workloads, x),
           k
         ])
       end
