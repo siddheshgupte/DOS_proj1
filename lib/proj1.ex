@@ -8,14 +8,14 @@ defmodule Proj1 do
   # Function takes n and k and divides the input amongst machines
   def driver(n, k) do
 
-
+    work_load = Enum.to_list(1..n)
+    number_of_divisions = find_best_task_division(n, work_load)
 
     # Divide n according to the number of machines
     if length(Node.list()) > 0 do
       # Divide workload amongst the machines
       chunks_of_workloads =
-        1..n
-        |> Enum.to_list()
+        work_load
         |> Enum.chunk_every(div(n, length(Node.list()) + 1))
 
       # Assign all workloads except the last one to connected nodes (from 0 to len(Node.list)-1)
@@ -27,18 +27,17 @@ defmodule Proj1 do
       end
 
       # Assign last workload to current node
-      start_task(n, Enum.at(chunks_of_workloads, length(Node.list())), k)
+      start_task(number_of_divisions, Enum.at(chunks_of_workloads, length(Node.list())), k)
     else
       #  If no other nodes are connected assign the complete workload to current node
-      start_task(n, Enum.to_list(1..n), k)
+      start_task(number_of_divisions, work_load, k)
     end
   end
 
-  def start_task(n, workload_list, k) do
+  def start_task(num_of_divisions, workload_list, k) do
     ## Number of chunks given to each Task
     # num_of_divisions = 390625
-    num_of_divisions = find_best_task_division(n, workload_list)
-
+    
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
@@ -79,7 +78,6 @@ defmodule Proj1 do
     possible_number_of_tasks =
       lst
       |> Enum.filter(fn x -> rem(n, x) == 0 end)
-      |> IO.inspect
 
     # Print the best task division (This should be assigned to num_of_divisions in start_task )
     possible_number_of_tasks
