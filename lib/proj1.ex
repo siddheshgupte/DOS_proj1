@@ -51,21 +51,30 @@ defmodule Proj1 do
 
   # Function to do all the calculations and print the output
   def process_range(lst, k) do
-    for ele <- lst do
-      # sq_rt = square root of sum of squares of ele to ele + k-1
+    sq_lst =
+      Enum.at(lst, 0)..(Enum.at(lst, length(lst) - 1) + k)
+      |> Enum.map(fn x -> :math.pow(x, 2) end)
+
+    # for ele <- sq_lst do
+    # sq_rt = square root of sum of squares of ele to ele + k-1
+    # sq_rt =
+    #   ele
+    #   |> Range.new(ele + k - 1)
+    #   |> Enum.to_list()
+    #   |> Enum.map(fn x -> :math.pow(x, 2) end)
+    #   |> Enum.sum()
+    #   |> :math.sqrt()
+
+    for lst2 <- Enum.chunk_every(sq_lst, k, 1) do
       sq_rt =
-        ele
-        |> Range.new(ele + k - 1)
-        |> Enum.to_list()
-        |> Enum.map(fn x -> :math.pow(x, 2) end)
+        lst2
         |> Enum.sum()
         |> :math.sqrt()
 
       # Check if perfect square
       if sq_rt - trunc(sq_rt) == 0 do
         # IO.puts("#{ele}, #{sq_rt}, #{Node.self()}")
-        # IO.puts("#{ele}")
-        IO.puts("#{ele}, #{Node.self()}")
+        IO.puts("#{:math.sqrt(Enum.at(lst2, 0))}, #{Node.self()}")
       end
     end
   end
