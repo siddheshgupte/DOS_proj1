@@ -7,34 +7,37 @@ defmodule Proj1 do
 
   # Function takes n and k and divides the input amongst machines
   def driver(n, k) do
+
+    work_load = Enum.to_list(1..n)
+    number_of_divisions = find_best_task_division(n, work_load)
+
     # Divide n according to the number of machines
     if length(Node.list()) > 0 do
       # Divide workload amongst the machines
       chunks_of_workloads =
-        1..n
-        |> Enum.to_list()
+        work_load
         |> Enum.chunk_every(div(n, length(Node.list()) + 1))
 
       # Assign all workloads except the last one to connected nodes (from 0 to len(Node.list)-1)
       for x <- Enum.to_list(0..(length(Node.list()) - 1)) do
         Node.spawn_link(Enum.at(Node.list(), x), Proj1, :start_task, [
-          Enum.at(chunks_of_workloads, x),
+          number_of_divisions, Enum.at(chunks_of_workloads, x),
           k
         ])
       end
 
       # Assign last workload to current node
-      start_task(Enum.at(chunks_of_workloads, length(Node.list())), k)
+      start_task(number_of_divisions, Enum.at(chunks_of_workloads, length(Node.list())), k)
     else
       #  If no other nodes are connected assign the complete workload to current node
-      start_task(Enum.to_list(1..n), k)
+      start_task(number_of_divisions, work_load, k)
     end
   end
 
-  def start_task(workload_list, k) do
+  def start_task(num_of_divisions, workload_list, k) do
     ## Number of chunks given to each Task
-    num_of_divisions = 4
-
+    # num_of_divisions = 390625
+    
     # List of ranges passed to each task (length of list_of_ranges == number of tasks)
     # chunk the input into number of ranges required (n//num_of_divisions)
     list_of_ranges =
@@ -79,16 +82,16 @@ defmodule Proj1 do
     end
   end
 
-  def find_best_task_division(n) do
+  def find_best_task_division(n, lst) do
     # Make a list of the possible number of tasks
     possible_number_of_tasks =
-      1..n
-      |> Enum.to_list()
+      lst
       |> Enum.filter(fn x -> rem(n, x) == 0 end)
 
     # Print the best task division (This should be assigned to num_of_divisions in start_task )
     possible_number_of_tasks
     |> Enum.at(div(length(possible_number_of_tasks), 4) * 3)
+    # |> Enum.at(div(length(possible_number_of_tasks), 2))
     |> IO.inspect()
   end
 end
